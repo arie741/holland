@@ -35,3 +35,43 @@
 	background:#dff0d8;
 	color:#3c763d;
 }
+
+.pan-r, .pan-i ,.pan-a, .pan-s, .pan-e, .pan-c {
+	text-align: center;
+}
+
+.pan-r {
+	color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.pan-i {
+	color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.pan-a {
+	color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.pan-s {
+	color: #d265c4;
+    background-color: #f5c4ef;
+    border-color: #ffd6fa;
+}
+
+.pan-e {
+	color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.pan-c {
+	color: #f95518;
+    background-color: #ffbba2;
+    border-color: #ffe7de;
+}

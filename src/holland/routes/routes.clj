@@ -8,7 +8,18 @@
 ;;functions
 
 (defn parsejw [rer rei rea res ree rec]
-  {:r rer, :i rei, :a rea, :s res, :e ree, :c rec})
+  {:r (Integer/parseInt rer), 
+   :i (Integer/parseInt rei), 
+   :a (Integer/parseInt rea), 
+   :s (Integer/parseInt res), 
+   :e (Integer/parseInt ree), 
+   :c (Integer/parseInt rec)})
+
+(defn mav [raw]
+  (apply max (vals raw)))
+
+(defn parseres [raw]
+  (select-keys raw (for [[k v] raw :when (= v (mav raw))] k)))
 
 ;;template & snippets
 
@@ -20,13 +31,18 @@
   [:#part3content :> :*]
   [])
 
+(deftemplate rept "public/results.html"
+  [res]
+  [(keyword (str "div.pan-" (last (str (first (keys res))))))] (html/remove-class "hidden")
+  [(keyword (str "div.pan-" (last (str (last (keys res))))))] (html/remove-class "hidden"))
+
 (deftemplate home "public/index.html"
-  	[]
- 	[:part2] (html/substitute (part2))
+  []
+  [:part2] (html/substitute (part2))
   [:part3] (html/substitute (part3)))
 
 (defroutes app-routes
   (GET "/" [] (home))
   (GET "/res/:rer/:rei/:rea/:res/:ree/:rec" [rer rei rea res ree rec]
-  	(str (parsejw rer rei rea res ree rec)))
+  	(rept (parseres (parsejw rer rei rea res ree rec))))
   (route/not-found "Not Found"))
