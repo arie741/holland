@@ -28,5 +28,5 @@
 (defroutes app-routes
   (GET "/" [] (home))
   (GET "/res/:rer/:rei/:rea/:res/:ree/:rec" [rer rei rea res ree rec]
-  	(str rer rei rea res ree rec))
+  	(str (parsejw rer rei rea res ree rec)))
   (route/not-found "Not Found"))
