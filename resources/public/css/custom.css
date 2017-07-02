@@ -1,0 +1,37 @@
+.content {
+	margin-top:10px;
+}
+
+.green-panel {
+	background-color:#dff0d8;
+	color:#3c763d;
+}
+
+.optiontab > *{
+	width:100%;
+	margin-bottom:10px;
+}
+
+.optiontab > *:hover{
+	background:#dff0d8;
+	color:#3c763d;
+	border-color:#3c763d;
+}
+
+.optiontab > *:active{
+	background:#dff0d8 !important;
+	color:#3c763d;
+	border-color:#3c763d;
+}
+
+.pn-btn {
+	display:block;
+	margin-right: auto;
+	margin-left: auto;
+	width:129px;
+}
+
+.bactive {
+	background:#dff0d8;
+	color:#3c763d;
+}
