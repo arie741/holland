@@ -1,3 +1,11 @@
+body {
+	background-image:url("/img/polygon-blue.jpg");
+}
+
+.btn {
+	white-space:normal;
+}
+
 .content {
 	margin-top:10px;
 }
@@ -11,6 +19,7 @@
 	width:100%;
 	margin-bottom:10px;
 	border: 1px solid #ccc;
+	background-color: #fff;
 }
 
 .pn-btn {
@@ -20,9 +29,13 @@
 	width:129px;
 }
 
+.pn-btn * {
+	border-color:#fff;
+}
+
 .bactive {
-	background:#dff0d8;
-	color:#3c763d;
+	background:#efbb01;
+	color:#000;
 }
 
 .pan-r, .pan-i ,.pan-a, .pan-s, .pan-e, .pan-c {
@@ -63,9 +76,5 @@
 	color: #f95518;
     background-color: #ffbba2;
     border-color: #ffe7de;
-}
-
-.btn {
-	white-space:normal;
 }
 
