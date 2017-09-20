@@ -34,7 +34,7 @@ body {
 }
 
 .bactive {
-	background:#efbb01;
+	background:#fbff00;
 	color:#000;
 }
 
@@ -78,3 +78,24 @@ body {
     border-color: #ffe7de;
 }
 
+.panel-login {
+	max-width:300px;
+	display:block;
+	margin-right:auto;
+	margin-left:auto;
+	height:272px;
+}
+
+.panel-login h2 {
+	text-align: center;
+}
+
+.panel-login button {
+	margin-top:10px;
+}
+
+@media only screen and (min-width: 768px) {
+    .panel-login {
+        margin-top:100px;
+    }
+}

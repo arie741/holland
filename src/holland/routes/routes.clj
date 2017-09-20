@@ -3,7 +3,10 @@
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [net.cgrand.enlive-html :as html]
-            [net.cgrand.enlive-html :refer [deftemplate defsnippet]]))
+            [net.cgrand.enlive-html :refer [deftemplate defsnippet]]
+            [noir.session :as session]
+            [noir.response :as resp]
+            [holland.db :as db]))
 
 ;;functions
 
@@ -36,13 +39,55 @@
   [(keyword (str "div.pan-" (last (str (first (keys res))))))] (html/remove-class "hidden")
   [(keyword (str "div.pan-" (last (str (last (keys res))))))] (html/remove-class "hidden"))
 
-(deftemplate home "public/index.html"
+(deftemplate layout "public/layout.html"
+  [content]
+  [:div.content] (html/substitute content))
+
+(defsnippet home "public/index.html"
+  [:div.content]
   []
   [:part2] (html/substitute (part2))
   [:part3] (html/substitute (part3)))
 
+(defn homepage []
+  (layout (home)))
+
+(defsnippet logins "public/login.html"
+  [:div.content]
+  [mes]
+  [:div.panel-warning] (html/content mes))
+
+(defn loginpage [& mes]
+  (layout (logins (first mes))))
+
+(defsnippet regs "public/register.html"
+  [:div.content]
+  [mes]
+  [:div.panel-warning] (html/content mes))
+
+(defn registerpage [& mes]
+  (layout (regs (first mes))))
+
+;;routes
+
 (defroutes app-routes
-  (GET "/" [] (home))
+  (GET "/" [] (if (session/get :username) (homepage) (loginpage)))
+  (POST "/login-action" {params :params}
+    (let [username (:username params)
+          password (:password params)]
+        (if (not= 0 (count (db/login-f username)))
+          (if (= password (apply :password (db/login-f username)))
+            (do
+              (session/put! :username username)
+              (homepage))
+            (loginpage "Wrong password or the username doesn't exist"))
+          (loginpage "Wrong password or the username doesn't exist"))))
+  (GET "/register" []
+    (registerpage))
   (GET "/res/:rer/:rei/:rea/:res/:ree/:rec" [rer rei rea res ree rec]
   	(rept (parseres (parsejw rer rei rea res ree rec))))
+  (GET "/logout" []
+    (do
+      (session/clear!)
+      (resp/redirect "/")))
   (route/not-found "Not Found"))

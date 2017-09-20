@@ -5,7 +5,9 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [compojure "1.5.1"]
                  [ring/ring-defaults "0.2.1"]
-                 [enlive "1.1.6"]]
+                 [enlive "1.1.6"]
+                 [lib-noir "0.9.9"]
+                 [clj-postgresql "0.4.0"]]
   :plugins [[lein-ring "0.9.7"]]
   :ring {:handler holland.handler/app}
   :profiles
