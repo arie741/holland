@@ -7,28 +7,54 @@ var options = 0;
 var optione = 0;
 var optionc = 0;
 
+$('#modal-part1').modal('show');
+$('#modal-part2').modal('hide');
+$('#modal-part3').modal('hide');
+
 function checkinfon(){
 	if(currenttab >= 1 && currenttab <= 6){
 		$("#part1panel").removeClass("hidden");
 		$("#part2panel").addClass("hidden");
 		$("#part3panel").addClass("hidden");
 		$("#part4panel").addClass("hidden");
+
 	} else if (currenttab >= 7 && currenttab <= 12) {
 		$("#part1panel").addClass("hidden");
 		$("#part2panel").removeClass("hidden");
 		$("#part3panel").addClass("hidden");
 		$("#part4panel").addClass("hidden");
+
 	} else if (currenttab >= 13 && currenttab <= 18) {
 		$("#part1panel").addClass("hidden");
 		$("#part2panel").addClass("hidden");
 		$("#part3panel").removeClass("hidden");
 		$("#part4panel").addClass("hidden");
+
 	} else if (currenttab > 18) {
 		$("#part1panel").addClass("hidden");
 		$("#part2panel").addClass("hidden");
 		$("#part3panel").addClass("hidden");
 		$("#part4panel").removeClass("hidden");
+		$('#modal-part1').modal('hide')
+		$('#modal-part2').modal('hide')
+		$('#modal-part3').modal('hide')
 	};
+}
+
+function checkmodal() {
+	if(currenttab == 1) {
+		$('#modal-part1').modal('show');
+		$('#modal-part2').modal('hide');
+		$('#modal-part3').modal('hide');
+	} else if (currenttab == 7){
+		$('#modal-part1').modal('hide');
+		$('#modal-part2').modal('show');
+		$('#modal-part3').modal('hide');
+	} else if (currenttab == 13){
+		$('#modal-part1').modal('hide');
+		$('#modal-part2').modal('hide');
+		$('#modal-part3').modal('show');
+	}
 }
 
 function checkctn() {
@@ -69,6 +95,7 @@ function checkctp() {
 $( "#bnext" ).click(function() {
   	checkctn();
   	checkinfon();
+  	checkmodal();
 });
 
 $( "#bprev" ).click(function() {

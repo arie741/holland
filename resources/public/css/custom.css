@@ -115,6 +115,10 @@ body {
 	margin:2px;
 }
 
+.modal-ket {
+	text-align: center;
+}
+
 @media only screen and (min-width: 768px) {
     .panel-login {
         margin-top:100px;
