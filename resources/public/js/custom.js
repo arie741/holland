@@ -12,14 +12,22 @@ function checkinfon(){
 		$("#part1panel").removeClass("hidden");
 		$("#part2panel").addClass("hidden");
 		$("#part3panel").addClass("hidden");
+		$("#part4panel").addClass("hidden");
 	} else if (currenttab >= 7 && currenttab <= 12) {
 		$("#part1panel").addClass("hidden");
 		$("#part2panel").removeClass("hidden");
 		$("#part3panel").addClass("hidden");
+		$("#part4panel").addClass("hidden");
 	} else if (currenttab >= 13 && currenttab <= 18) {
 		$("#part1panel").addClass("hidden");
 		$("#part2panel").addClass("hidden");
 		$("#part3panel").removeClass("hidden");
+		$("#part4panel").addClass("hidden");
+	} else if (currenttab > 18) {
+		$("#part1panel").addClass("hidden");
+		$("#part2panel").addClass("hidden");
+		$("#part3panel").addClass("hidden");
+		$("#part4panel").removeClass("hidden");
 	};
 }
 

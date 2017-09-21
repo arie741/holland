@@ -71,6 +71,13 @@
 (defn registerpage [& mes]
   (layout (regs (first mes))))
 
+(defsnippet intros "public/intro.html"
+  [:div.content]
+  [])
+
+(defn intropage []
+  (layout (intros)))
+
 ;;Template processing functions
 (defn val-registration [nm age sex pendidikan jurusan email phone kode keterangan username pass1 pass2]
   (if (= pass1 pass2)
@@ -83,10 +90,18 @@
       (registerpage "Username sudah ada, gunakan yang lain."))
     (registerpage "Password doesn't match.")))
 
+(defn validate [y n]
+  (if (session/get :username)
+    y
+    n))
+
 ;;routes
 
 (defroutes app-routes
-  (GET "/" [] (if (session/get :username) (homepage) (loginpage)))
+  (GET "/" [] 
+    (validate (intropage) (loginpage)))
+  (GET "/test" [] 
+    (validate (homepage) (loginpage)))
   (POST "/login-action" {params :params}
     (let [username (:username params)
           password (:password params)]
@@ -95,7 +110,7 @@
             (do
               (session/clear!)
               (session/put! :username username)
-              (homepage))
+              (intropage))
             (loginpage "Wrong password or the username doesn't exist"))
           (loginpage "Wrong password or the username doesn't exist"))))
   (GET "/register" []
@@ -115,10 +130,10 @@
       (:password params)
       (:password2 params)))
   ;nm age sex pendidikan jurusan email phone kode keterangan username pass1 pass2
-  (GET "/qlog/:as" [as]
-    (str (= 0 (count (db/login-f as)))))
   (GET "/res/:rer/:rei/:rea/:res/:ree/:rec" [rer rei rea res ree rec]
-  	(rept (parseres (parsejw rer rei rea res ree rec))))
+  	(do
+      (session/clear!)
+      (rept (parseres (parsejw rer rei rea res ree rec)))))
   (GET "/logout" []
     (do
       (session/clear!)
