@@ -110,6 +110,7 @@
             (do
               (session/clear!)
               (session/put! :username username)
+              (session/put! :uuid (apply :uuid (db/login-f username)))
               (intropage))
             (loginpage "Wrong password or the username doesn't exist"))
           (loginpage "Wrong password or the username doesn't exist"))))
@@ -132,8 +133,11 @@
   ;nm age sex pendidikan jurusan email phone kode keterangan username pass1 pass2
   (GET "/res/:rer/:rei/:rea/:res/:ree/:rec" [rer rei rea res ree rec]
   	(do
+      (db/update-by-uuid (session/get :uuid) rer rei rea res ree rec)
       (session/clear!)
-      (rept (parseres (parsejw rer rei rea res ree rec)))))
+      (resp/redirect (str "/result/" rer "/" rei "/" rea "/" res "/" ree "/" rec))))
+  (GET "/result/:rer/:rei/:rea/:res/:ree/:rec" [rer rei rea res ree rec]
+    (rept (parseres (parsejw rer rei rea res ree rec))))
   (GET "/logout" []
     (do
       (session/clear!)
