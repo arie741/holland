@@ -86,12 +86,29 @@ body {
 	height:272px;
 }
 
-.panel-login h2 {
+.panel-register {
+	max-width:300px;
+	display:block;
+	margin-right:auto;
+	margin-left:auto;
+	height:950px;
+}
+
+.panel-login h2, .panel-register h2 {
 	text-align: center;
 }
 
-.panel-login button {
+.panel-login button, .panel-register button {
 	margin-top:10px;
+}
+
+.panel-message {
+	background-color: #ffa7a7;
+    border-radius: 3px;
+}
+
+.panel-message * {
+	margin:2px;
 }
 
 @media only screen and (min-width: 768px) {

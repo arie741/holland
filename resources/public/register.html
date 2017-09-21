@@ -1,20 +1,53 @@
 <div class="content">
 	<div class="container">
-		<div class="panel panel-default panel-login">
+		<div class="panel panel-default panel-register">
 			<div class="panel-body">
 				<form action="/register-action" method="POST">
 					<h2>Register</h2>
-					<input class="form-control" type="text" name="username" placeholder="Username" required="" autofocus="">
-					<input class="form-control" type="text" name="umur" placeholder="Umur" required="" >
+					<input class="form-control" type="text" name="nama" placeholder="Nama Lengkap" required="" autofocus="">
+					<input class="form-control" type="number" name="umur" placeholder="Umur" required="" autofocus="">
 					<input class="form-control" type="text" name="sekolah" placeholder="Sekolah" required="" >
 					<input class="form-control" type="text" name="jurusan" placeholder="Target Jurusan" required="" >
 					<input class="form-control" type="text" name="email" placeholder="Email">
+					<input class="form-control" type="number" name="phone" placeholder="Nomer Handphone">
+					<br>
+					<h4>Jenis Kelamin</h4>
+					<div class="radio">
+						<label><input type="radio" name="gender" value="male">Laki-laki</label>
+					</div>
+					<div class="radio">
+						<label><input type="radio" name="gender" value="female">Perempuan</label>
+					</div>
+					<br>
+					<h4>Rencana Setelah Lulus</h4>
+					<div class="radio">
+						<label><input type="checkbox" name="kode" value="1">Belum ada rencana.</label>
+					</div>
+					<div class="radio">
+						<label><input type="checkbox" name="kode" value="2">Bekerja</label>
+					</div>
+					<div class="radio">
+						<label><input type="checkbox" name="kode" value="3">Kuliah</label>
+					</div>
+					<div class="radio">
+						<label><input type="checkbox" name="kode" value="4">Wirausaha</label>
+					</div>
+					<div class="radio">
+						<label><input type="checkbox" name="kode" value="5">Lain-lain</label>
+					</div>
+					<div class="form-group">
+						<label for="comment">Keterangan:</label>
+						<textarea style="resize:none" class="form-control" rows="5" id="keterangan" name="keterangan"></textarea>
+					</div>
+					<br>
+					<input class="form-control" type="text" name="username" placeholder="Username" required="" >
 					<input class="form-control" type="text" name="password" type="password" placeholder="Password" required="">
+					<input class="form-control" type="text" name="password2" type="password" placeholder="Ulang Password" required="">
 					<button class="btn btn-lg btn-block" type="submit">Register</button>
 				</form>
 			</div>
 			<div class="row">
-				<div class="panel panel-warning"></div>
+				<div class="panel-message"></div>
 			</div>
 		</div>
 	</div>
