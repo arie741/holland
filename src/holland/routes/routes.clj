@@ -124,7 +124,7 @@
       (:sekolah params) 
       (:jurusan params) 
       (:email params) 
-      (Integer/parseInt (:phone params)) 
+      (:phone params) 
       (str (:kode params)) 
       (:keterangan params) 
       (:username params) 
