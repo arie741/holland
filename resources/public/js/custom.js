@@ -154,4 +154,3 @@ $(".op-c > *").click(function(){
 $(".optiontab > .btn").click(function() {
 	$(this).toggleClass('bactive');
 });
-
