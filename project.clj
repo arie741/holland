@@ -9,7 +9,8 @@
                  [lib-noir "0.9.9"]
                  [clj-postgresql "0.4.0"]]
   :plugins [[lein-ring "0.9.7"]]
-  :ring {:handler holland.handler/app}
+  :ring {:handler holland.handler/app
+         :port 32437}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring/ring-mock "0.3.0"]]}})
