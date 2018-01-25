@@ -80,7 +80,7 @@
 
 ;;Template processing functions
 (defn regexp-val [txt]
-  (if (= nil (re-find (re-pattern "[^a-z0-9_]") txt)) 
+  (if (= nil (re-find (re-pattern "[^a-zA-Z0-9_]") txt)) 
     true
     false))
 
@@ -91,7 +91,7 @@
         (let [nuuid (cuuid)]
           (do
           (db/addprofdb nm age sex pendidikan jurusan email phone kode keterangan nuuid)
-          (db/adduser username pass1 nuuid)
+          (db/adduser (clojure.string/lower-case username) pass1 nuuid)
           (loginpage "Anda telah terdaftar")))
         (registerpage "Username sudah ada, gunakan yang lain."))
       (registerpage "Password doesn't match."))
@@ -110,7 +110,7 @@
   (GET "/test" [] 
     (validate (homepage) (loginpage)))
   (POST "/login-action" {params :params}
-    (let [username (:username params)
+    (let [username (clojure.string/lower-case (:username params))
           password (:password params)]
         (if (not= 0 (count (db/login-f username)))
           (if (= password (apply :password (db/login-f username)))
