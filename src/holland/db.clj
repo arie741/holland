@@ -21,9 +21,9 @@
 	(jdbc/insert! db2 :profiles 
 		{:name nm :age age :sex sex :pendidikan pendidikan :jurusan jurusan :email email :instagram instagram :phone phone :kode kode :keterangan keterangan :uuid uuid}))
 
-(defn update-by-uuid [nuuid r i a s e c]
+(defn update-by-uuid [nuuid r i a s e c res]
 	(jdbc/update! db2 :profiles
-		{:r (Integer/parseInt r) :i (Integer/parseInt i) :a (Integer/parseInt a) :s (Integer/parseInt s) :e (Integer/parseInt e) :c (Integer/parseInt c)} ["uuid = ?" nuuid]))
+		{:r (Integer/parseInt r) :i (Integer/parseInt i) :a (Integer/parseInt a) :s (Integer/parseInt s) :e (Integer/parseInt e) :c (Integer/parseInt c) :result res} ["uuid = ?" nuuid]))
 
 (defn adduser [nuser pw uuid]
 	(jdbc/insert! db2 :holland
