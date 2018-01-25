@@ -17,9 +17,9 @@
 	(jdbc/query db2 [(str "select * from holland where username = '" uuid "'")]))
 
 ;;UPDATE
-(defn addprofdb [nm age sex pendidikan jurusan email phone kode keterangan uuid]
+(defn addprofdb [nm age sex pendidikan jurusan email instagram phone kode keterangan uuid]
 	(jdbc/insert! db2 :profiles 
-		{:name nm :age age :sex sex :pendidikan pendidikan :jurusan jurusan :email email :phone phone :kode kode :keterangan keterangan :uuid uuid}))
+		{:name nm :age age :sex sex :pendidikan pendidikan :jurusan jurusan :email email :instagram instagram :phone phone :kode kode :keterangan keterangan :uuid uuid}))
 
 (defn update-by-uuid [nuuid r i a s e c]
 	(jdbc/update! db2 :profiles

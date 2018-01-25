@@ -84,15 +84,15 @@
     true
     false))
 
-(defn val-registration [nm age sex pendidikan jurusan email phone kode keterangan username pass1 pass2]
+(defn val-registration [nm age sex pendidikan jurusan email instagram phone kode keterangan username pass1 pass2]
   (if (and (< (count username) 25) (> (count username) 3) (regexp-val username))
     (if (= pass1 pass2)
       (if (= 0 (count (db/login-f username)))
         (let [nuuid (cuuid)]
           (do
-          (db/addprofdb nm age sex pendidikan jurusan email phone kode keterangan nuuid)
-          (db/adduser (clojure.string/lower-case username) pass1 nuuid)
-          (loginpage "Anda telah terdaftar")))
+            (db/addprofdb nm age sex pendidikan jurusan email instagram phone kode keterangan nuuid)
+            (db/adduser (clojure.string/lower-case username) pass1 nuuid)
+            (loginpage "Anda telah terdaftar")))
         (registerpage "Username sudah ada, gunakan yang lain."))
       (registerpage "Password doesn't match."))
     (registerpage "Username harus diisi dengan huruf kecil, 4 sampai 25 karakter, dan tidak ada spasi dan spesial karakter.")))
@@ -131,6 +131,7 @@
       (:sekolah params) 
       (:jurusan params) 
       (:email params) 
+      (:instagram params) 
       (:phone params) 
       (str (:kode params)) 
       (:keterangan params) 
