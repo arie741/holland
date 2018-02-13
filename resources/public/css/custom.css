@@ -1,9 +1,19 @@
 body {
-	background-image:url("/img/polygon-blue.jpg");
+	background-color:#C41C1C;
 }
 
-.btn {
+h1, h2 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 800;
+}
+
+.btn, .btn:hover, .btn:active {
+	background-color: #ffb700;
 	white-space:normal;
+}
+
+a.btn, a.btn:hover {
+	color:#fff;
 }
 
 .content {
@@ -16,7 +26,7 @@ body {
 }
 
 .green-panel h1{
-	color:#333;
+	color:#333;http://localhost:32437/test
 }
 
 .optiontab > *{
@@ -38,7 +48,7 @@ body {
 }
 
 .bactive {
-	background:#fbff00;
+	background:#ffb700;
 	color:#000;
 }
 
@@ -95,7 +105,7 @@ body {
 	display:block;
 	margin-right:auto;
 	margin-left:auto;
-	height:975px;
+	min-height:975px;
 }
 
 .panel-login h2, .panel-register h2 {
