@@ -7,7 +7,7 @@ h1, h2 {
 	font-weight: 800;
 }
 
-.btn, .btn:hover, .btn:active {
+.btn {
 	background-color: #ffb700;
 	white-space:normal;
 	border-color:#ffb700 !important;
